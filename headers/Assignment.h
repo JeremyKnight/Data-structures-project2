@@ -5,7 +5,7 @@
 // March 1, 2019
 ///////////////////////
 
-#ifdef _ASSIGNMENT_H_
+#ifndef _ASSIGNMENT_H_
 #define  _ASSIGNMENT_H_
 
 #include <iostream>
@@ -35,7 +35,7 @@ class Assignment {
             name = n;
         }
 
-        int geDueDate() {
+        int getDueDate() {
             return dueDate;
         }
 
@@ -49,6 +49,14 @@ class Assignment {
 
         void setCourse(string c) {
             course = c;
+        }
+
+        bool operator == (Assignment& right) {
+            return this->getCourse() == right.getCourse() && this->getDueDate() == right.getDueDate() && this->getName() == right.getName();
+        }
+
+        string toString() {
+            return name+ " " + course + " " + to_string(dueDate); 
         }
 
 };
