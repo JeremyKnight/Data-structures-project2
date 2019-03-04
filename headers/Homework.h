@@ -11,44 +11,30 @@
 
 #include "Assignment.h"
 using namespace std;
-
+// The Homework class stores a collection of upcoming assignments.
 class Homework {
     private:
         vector<Assignment> assignments;
+        // Remove an assignment to the homowork object's collection of assignments.
+        // int n -- the index of the assignment to remove
+        void removeAssignment(int n);
+
     public:
-        Homework() {
-            assignments = vector<Assignment>();
-        }
-
-        void addAssignment(Assignment a) {
-            assignments.push_back(a);
-        }
-
-        void removeAssignment(int n) {
-            if(n< assignments.size()) {
-                assignments.erase(assignments.begin() + n);
-            } else {
-                cout << "no assignmnet found" << endl;
-            }
-        }
-
-        void removeAssignment(Assignment a) {
-            for(int i=0; i<assignments.size(); i++) {
-                Assignment b = assignments.at(i);
-                if(b == a) {
-                    removeAssignment(i);
-                }
-            }
-        }
-
-        void print() {
-            for(int i = 0; i< assignments.size(); i++) {
-                cout << assignments.at(i).toString() << endl;
-            }
-        }
-
-
-
+        // Construct a homework object with an empty collection of assignments.
+        Homework();
+        // Construct a homework object with a vector of initial homeowrk assignments.
+        // as -- the vector of initial homework assignments
+        Homework(vector<Assignment> as);
+        // Add an assignment to the homework object's collection of assignments.
+        // a -- the assignment to add
+        void addAssignment(Assignment a);
+        // Remove an assignment to the homework object's collectionof assignments.
+        // a -- the assignment to remove
+        void removeAssignment(Assignment a);
+        // Prints a description of every assignment in the object's collection of assignments.
+        void print();
+        // Returns the assignment closest to being due.
+        Assignment getLatestAssignment();
 };
 
 #endif
